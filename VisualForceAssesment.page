@@ -1,0 +1,43 @@
+<apex:page standardController="Employment_Website__c" extensions="ApexCodeForVisualForceAssesment">
+  <apex:sectionHeader title="Account"/>
+  <apex:pageMessages ></apex:pageMessages>
+  <Apex:form >
+  <apex:pageBlock title="Account">
+ 
+  <apex:pageblockSection title="Account Details">
+  <apex:pageblockSectionItem >
+  <apex:outputLabel value="Account Name"></apex:outputLabel>
+  <Apex:inputText value="{!name}"/>
+  </apex:pageblockSectionItem> 
+  <apex:pageblockSectionItem >
+  <apex:outputLabel value="Industry"></apex:outputLabel>
+  <apex:SelectList size="1">
+  <apex:selectOption itemLabel="None" itemvalue="industry"></apex:selectOption>
+  <apex:selectOption itemLabel="Noida" itemvalue="industry1"></apex:selectOption>
+  <apex:selectOption itemLabel="Chennai" itemvalue="industry2"></apex:selectOption>
+  </apex:SelectList>
+  </apex:pageblockSectionItem>
+  </apex:pageblockSection>
+  
+  <apex:pageblockSection title="Address">
+  <apex:pageBlockSectionItem >
+  <apex:outputLabel value="City"></apex:outputLabel>
+  <apex:inputtext value="{!city}"/>
+  </apex:pageBlockSectionItem>
+  
+  <apex:pageblockSectionItem >
+  <apex:outputLabel value="Place"></apex:outputLabel>
+  <apex:inputText value="{!place}"/>
+  </apex:pageblockSectionItem>
+  </apex:pageblockSection>
+  
+  <apex:pageBlockButtons >
+  <apex:commandButton value="Submit" action="{!submit}"/>
+  <apex:commandButton value="Reset" action="{!reset}"/>
+  </apex:pageBlockButtons>
+ 
+ 
+  </apex:pageBlock>
+  
+  </apex:form>
+</apex:page>
