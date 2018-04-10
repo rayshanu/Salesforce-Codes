@@ -1,0 +1,118 @@
+<apex:page controller="ApexForRegistrationPage" id="page">
+  <!--Creating a Form--> 
+  <apex:form id="form">
+  <!--apex:pageMessages for Displaying Error/Confirmation messages on the Top of the Page-->
+  <apex:pagemessages />
+  <!--Creating a PageBlock with title-->
+  <apex:pageBlock title="User Registration Form" id="pageblock">
+  <apex:pageblockSection title="User Personal Information" >
+  <!--Creating Lables with Input boxes for the user to enter data-->
+  <apex:pageBlockSectionItem >
+  <apex:outputLabel value="First Name"></apex:outputLabel>
+  <apex:inputText value="{!firstName}"/>
+  </apex:pageBlockSectionItem>
+  <apex:pageblockSectionItem >
+  <apex:outputLabel value="Last Name"/>
+  <apex:inputText value="{!lastName}"/>
+  </apex:pageblockSectionItem>
+  <apex:pageblockSectionItem >
+  <apex:outputLabel value="Email"></apex:outputLabel>
+  <apex:inputText value="{!email}"/> 
+  </apex:pageblockSectionItem>
+  <apex:pageBlockSectionItem >
+  <apex:outputLabel value="Phone"></apex:outputLabel>
+  <apex:inputText value="{!phone}" />
+  </apex:pageBlockSectionItem>
+  <apex:pageblockSectionItem >
+  <apex:outputLabel value="Gender" id="gender"></apex:outputLabel>
+  <apex:selectRadio >
+  <apex:selectOption itemLabel="Male" itemValue="gen1"></apex:selectOption>
+  <apex:selectOption itemlabel="Female" itemvalue="gen2"></apex:selectOption>
+  </apex:selectRadio>
+  </apex:pageblockSectionItem> 
+  <apex:pageblockSectionItem >
+  <apex:outputLabel value="Country" id="country"></apex:outputLabel>
+  <apex:selectList size="1">
+  <apex:selectOption itemlabel="None" itemValue="country1"></apex:selectOption>
+  <apex:selectOption itemlabel="India" itemValue="country2"></apex:selectOption>
+  <apex:selectOption itemlabel="USA" itemValue="country3"></apex:selectOption>
+  </apex:selectList>
+  </apex:pageblockSectionItem>
+  <apex:pageBlockSectionItem >
+  <apex:outputLabel value="Description"></apex:outputLabel>
+  <apex:inputTextarea rows="5" cols="50" value="{!description}"/>
+  </apex:pageBlockSectionItem>
+  </apex:pageblockSection>
+  
+ 
+  <apex:pageblockSection title="Address Details" id="pageBlockSection2">
+   <apex:pageBlockSectionItem id="pageBlockSectionItem1" >
+   <apex:outputLabel value="Present Street"></apex:outputLabel>
+   <apex:inputText id="corresAddress" value="{!corresAddress}"/>
+   </apex:pageBlockSectionItem>
+   
+   <apex:pageBlockSectionItem id="pageBlockSectionItem2">
+   <apex:outputLabel value="Permanent Street"></apex:outputLabel>
+   <apex:inputText id="permanentAddress" value="{!permanentAddress}"/>
+   </apex:pageBlockSectionItem>
+   
+   <apex:pageblockSectionItem id="pageBlockSectionItem3">
+   <apex:outputLabel value="Present City"></apex:outputLabel>
+   <apex:inputText id="corresCity" value="{!corresCity}"/>
+   </apex:pageblockSectionItem>
+   
+    <apex:pageblockSectionItem id="pageBlockSectionItem4">
+   <apex:outputLabel value="Permanent City"></apex:outputLabel>
+   <apex:inputText id="permanentCity" value="{!permanentCity}"/>
+   </apex:pageblockSectionItem>
+   
+   <apex:pageblockSectionItem id="pageBlockSectionItem5">
+   <apex:outputLabel value="Present State"></apex:outputLabel>
+   <apex:inputText id="corresState" value="{!corresState}"/>
+   </apex:pageblockSectionItem>
+   
+    <apex:pageblockSectionItem id="pageBlockSectionItem6">
+   <apex:outputLabel value="Permanent State"></apex:outputLabel>
+   <apex:inputText id="permanentState" value="{!permanentState}"/>
+   </apex:pageblockSectionItem>
+   
+   <apex:pageblockSectionItem id="pageBlockSectionItem7">
+   <apex:outputLabel value="Present Postal Code"></apex:outputLabel>
+   <apex:inputText id="corresCode" value="{!corresCode}"/>
+   </apex:pageblockSectionItem>
+   
+    <apex:pageblockSectionItem id="pageBlockSectionItem8">
+   <apex:outputLabel value="Permanent Postal Code"></apex:outputLabel>
+   <apex:inputText id="permanentCode" value="{!permanentCode}"/>
+   </apex:pageblockSectionItem>
+   
+   
+   <apex:commandButton value="Copy Address" oncomplete="show()"/>
+  
+  </apex:pageblockSection>
+  
+  <!--Creating Buttons for Saving and Resetting-->
+  <apex:pageblockButtons >
+  <apex:commandButton value="Save" action="{!save}"/>
+  <apex:commandButton value="Reset" action="{!reset}" />
+  </apex:pageblockButtons>
+  </apex:pageBlock>
+  </apex:form>
+  
+  <!--JavaScript function for copying input from one textbox to another textbox-->
+  <script>
+  function show(){
+  var copy=document.getElementById('{!$Component.form.pageblock.pageBlockSection2.pageBlockSectionItem1.corresAddress}').value;
+  document.getElementById('page:form:pageblock:pageBlockSection2:pageBlockSectionItem2:permanentAddress').value=copy;
+  
+  var copy1=document.getElementById('{!$Component.form.pageblock.pageBlockSection2.pageBlockSectionItem3.corresCity}').value;
+  document.getElementById('page:form:pageblock:pageBlockSection2:pageBlockSectionItem4:permanentCity').value=copy1;
+  
+  var copy2=document.getElementById('{!$Component.form.pageblock.pageBlockSection2.pageBlockSectionItem5.corresState}').value;
+  document.getElementById('page:form:pageblock:pageBlockSection2:pageBlockSectionItem6:permanentState').value=copy2;
+  
+  var copy3=document.getElementById('{!$Component.form.pageblock.pageBlockSection2.pageBlockSectionItem7.corresCode}').value;
+  document.getElementById('page:form:pageblock:pageBlockSection2:pageBlockSectionItem8:permanentCode').value=copy3; 
+  }
+  </script> 
+</apex:page>
